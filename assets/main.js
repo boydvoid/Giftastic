@@ -50,16 +50,35 @@ $(document).ready(() => {
       for (let i = 0; i < 10; i++) {
         //create the image div
         let img = $("<img>");
+        let card = $("<div>");
+        let cardBody = $("<div>");
+        let cardTitle = $("<h5>");
+        let rating = $("<p>");
+        let tags = $("<p>");
+        card.attr("class", "card");
+        cardBody.attr("class", "card-body");
+        cardTitle.attr("class", "card-title");
+        rating.attr("class", "card-text");
+        tags.attr("class", "card-text");
         img.attr("src", res.data[i].images.original_still.url);
         statics.push(res.data[i].images.original_still.url);
         gifs.push(res.data[i].images.original.url);
-        img.attr("class", "static image");
+        img.attr("class", "card-img-top static image");
         img.attr("data-index", [i]);
         img.attr("id", [i]);
+
+        cardTitle.text(res.data[i].title);
+        rating.text("Rating " + res.data[i].rating);
+        tags.text("tags: " + res.data[i].slug);
         //create the column
         let col = $("<div>");
         col.attr("class", "col-xl-3");
-        col.append(img);
+        cardBody.append(cardTitle);
+        cardBody.append(rating);
+        cardBody.append(tags);
+        card.append(img);
+        card.append(cardBody);
+        col.append(card);
         $("#images-row").append(col);
       }
     });

@@ -2,6 +2,12 @@ iframe {
   border: none;
 }
 
+#buttons-row {
+  margin-top: 20px;
+}
+#new-category {
+  margin-top: 20px;
+}
 .image {
   width: 250px;
   height: auto;
@@ -31,4 +37,8 @@ iframe {
   margin: 0;
   opacity: 1;
   transition: 0s;
+}
+
+.card {
+  margin-top: 20px;
 }
