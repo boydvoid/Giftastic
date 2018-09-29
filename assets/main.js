@@ -22,6 +22,21 @@ $(document).ready(() => {
     giphyCall(this.id);
   });
 
+  //form submit to add a new button
+  $("#new-category").submit(function(event) {
+    event.preventDefault();
+
+    //input box value
+    let newCategory = $(" #add-category").val();
+    newBtn = $("<button>");
+
+    newBtn.text(newCategory);
+
+    newBtn.attr("id", newCategory);
+    newBtn.attr("class", "btn btn-primary " + newCategory);
+    btnRow.append(newBtn);
+  });
+
   //ajax call for giphy
   function giphyCall(topic) {
     $.ajax({
@@ -34,6 +49,7 @@ $(document).ready(() => {
         //create the image div
         let img = $("<img>");
         img.attr("src", res.data[i].images.original_still.url);
+        img.attr("class", "static image");
         //create the column
         let col = $("<div>");
         col.attr("class", "col-xl-3");
@@ -42,6 +58,13 @@ $(document).ready(() => {
       }
     });
   }
+
+  //images onclick 
+  $(document).on('click', '.static', function () {
+    
+
+
+  })
 
   // end of doc ready
 });
